@@ -123,12 +123,12 @@ class ClipMgr:
         val = s.data[real_idx][0]
 
         m = tk.Menu(s.root, tearoff=0)
-        m.add_cmd(label="Copy", command=lambda: pyperclip.copy(val))
+        m.add_command(label="Copy", command=lambda: pyperclip.copy(val))
         if val in s.pins: 
-            m.add_cmd(label="UNpin", command=lambda: s.pins.discard(val) or s.refresh())
+            m.add_command(label="UNpin", command=lambda: s.pins.discard(val) or s.refresh())
         else: 
-            m.add_cmd(label="pin", command=lambda: s.pins.add(val) or s.refresh())
-        m.add_cmd(label="Delete", command=lambda: s.rm_by_val(val))
+            m.add_command(label="pin", command=lambda: s.pins.add(val) or s.refresh())
+        m.add_command(label="Delete", command=lambda: s.rm_by_val(val))
         m.post(e.x_root, e.y_root)
 
     def on_close(s):
